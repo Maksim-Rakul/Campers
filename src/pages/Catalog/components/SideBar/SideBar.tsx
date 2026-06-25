@@ -108,7 +108,7 @@ const SideBar = ({ onSubmit, onClear }: SideBarProps) => {
           type="button"
           onClick={onClear}
         >
-          Cleat
+          Clear
         </button>
       </Form>
     </Formik>
