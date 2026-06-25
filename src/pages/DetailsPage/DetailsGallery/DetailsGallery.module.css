@@ -1,0 +1,27 @@
+.gallery {
+    max-width: 638px;
+    flex-shrink: 0;
+}
+
+.originalImg {
+    border-radius: 17px;
+    margin-bottom: 27px;
+    height: 505px;
+}
+
+.pictureList {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+}
+
+.thumbImg {
+    max-width: 135px;
+    border-radius: 16px;
+    height: 144px;
+    cursor: pointer;
+}
+
+.active {
+    border: 3px solid #829b91;
+}

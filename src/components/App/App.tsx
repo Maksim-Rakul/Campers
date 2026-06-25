@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Header from "../Header/Header";
 import Home from "../Home/HomePage";
 import Catalog from "../../pages/Catalog/components/Catalog/Catalog";
-import Details from "../../pages/details";
 import Header from "../Header/Header";
+import Details from "../../pages/DetailsPage/Details/Details";
 
 const App = () => {
   return (
@@ -13,7 +12,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/details/:id" element={<Details />} />
         </Routes>
       </div>
     </BrowserRouter>

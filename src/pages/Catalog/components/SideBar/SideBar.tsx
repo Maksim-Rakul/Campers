@@ -1,34 +1,41 @@
 import type { FilterProps } from "../../../../types/campers";
-import { Field, Form, Formik, type FormikHelpers } from "formik";
+import { Field, Form, Formik } from "formik";
 import css from "./SideBar.module.css";
+import * as Yup from "yup";
+
+const SideBarFormSchema = Yup.object().shape({
+  form: Yup.string()
+    .oneOf(["alcove", "panel_van", "integrated", "semi_integrated"])
+    .required(),
+  engine: Yup.string()
+    .oneOf(["diesel", "petrol", "hybrid", "electric"])
+    .required(),
+  transmission: Yup.string().oneOf(["automatic", "manual"]).required(),
+});
 
 interface SideBarProps {
   onSubmit: (filter: FilterProps) => void;
+  onClear: () => void;
 }
 
 const initialValues: FilterProps = {
-  form: "",
-  engine: "",
-  tranmision: "",
+  form: "alcove",
+  engine: "diesel",
+  transmission: "automatic",
 };
 
-const SideBar = ({ onSubmit }: SideBarProps) => {
-  const handleSubmit = (
-    values: FilterProps,
-    actions: FormikHelpers<FilterProps>,
-  ) => {
+const SideBar = ({ onSubmit, onClear }: SideBarProps) => {
+  const handleSubmit = (values: FilterProps) => {
     onSubmit(values);
-    actions.resetForm();
-  };
-
-  const handleClick = () => {
-    
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={SideBarFormSchema}
+    >
       <Form className={css.form}>
-        <div>LOCATION</div>
         <h2 className={css.title}>Filters</h2>
         <fieldset className={css.fieldset}>
           <legend className={css.subtitle}>Camper form</legend>
@@ -39,7 +46,7 @@ const SideBar = ({ onSubmit }: SideBarProps) => {
           </label>
 
           <label className={css.form__name}>
-            <Field type="radio" name="form" value="panel" />
+            <Field type="radio" name="form" value="panel_van" />
             Panel Van
           </label>
 
@@ -49,7 +56,7 @@ const SideBar = ({ onSubmit }: SideBarProps) => {
           </label>
 
           <label className={css.form__name}>
-            <Field type="radio" name="form" value="semiIntegrated" />
+            <Field type="radio" name="form" value="semi_integrated" />
             Semi Integrated
           </label>
         </fieldset>
@@ -82,12 +89,12 @@ const SideBar = ({ onSubmit }: SideBarProps) => {
           <legend className={css.subtitle}>Engine</legend>
 
           <label className={css.form__name}>
-            <Field type="radio" name="tranmision" value="automatic" />
+            <Field type="radio" name="transmission" value="automatic" />
             Automatic
           </label>
 
           <label className={css.form__name}>
-            <Field type="radio" name="tranmision" value="manual" />
+            <Field type="radio" name="transmission" value="manual" />
             Manual
           </label>
         </fieldset>
@@ -95,8 +102,13 @@ const SideBar = ({ onSubmit }: SideBarProps) => {
         <button className={`btn ${css.search__btn}`} type="submit">
           Search
         </button>
-        <button className={`btn ${css.clear__btn}`} type="button" onClick={handleClick}>
-          Clear filters
+
+        <button
+          className={`btn ${css.clear__btn}`}
+          type="button"
+          onClick={onClear}
+        >
+          Cleat
         </button>
       </Form>
     </Formik>

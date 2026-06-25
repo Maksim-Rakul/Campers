@@ -4,3 +4,40 @@
     gap: 65px;
     align-items: flex-start;
 }
+
+.campersWrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.campers__btn {
+    border: 1px solid #dadde1;
+    border-radius: 200px;
+    padding: 16px 32px;
+    width: 145px;
+    height: 56px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: #101828;
+    background-color: transparent;
+}
+
+.loadmore {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    border-radius: 35px;
+    border: 1px solid black;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 40px;
+
+    transition: opacity 250ms ease-in-out;
+}
+
+.loadmore:hover {
+    opacity: 1;
+}
