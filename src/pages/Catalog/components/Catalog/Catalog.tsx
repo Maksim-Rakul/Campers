@@ -1,52 +1,72 @@
-import { useEffect, useState } from "react";
 import Container from "../../../../components/Container/Container";
 import SideBar from "../SideBar/SideBar";
 import css from "./Catalog.module.css";
-import type { Camper, FilterProps } from "../../../../types/campers";
 import CampersList from "../CampersList/CampersList";
+
 import { fetchCampers } from "../../../../services/campers";
+import { useInfiniteQuery } from "@tanstack/react-query";
+
+import type { FilterProps } from "../../../../types/campers";
+import Loader from "../../../../components/Loader/Loader";
+import Error from "../../../../components/Error/Error";
+import { useState } from "react";
+import NotFound from "../../../../components/NotFound/NotFound";
 
 const Catalog = () => {
-  const [filter, setFilter] = useState<FilterProps | null>(null);
-  const [campers, setCampers] = useState<Camper[]>([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  const [searchFilters, setSearchFilters] = useState<FilterProps | null>(null);
 
+  const { data, fetchNextPage, hasNextPage, isLoading, isError, error } =
+    useInfiniteQuery({
+      queryKey: ["campers", searchFilters],
+      queryFn: ({ pageParam }) =>
+        fetchCampers({
+          pageParam,
+          filters: searchFilters,
+        }),
 
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => {
+        if (lastPage.page < lastPage.totalPages) {
+          return lastPage.page + 1;
+        }
+        return undefined;
+      },
+    });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true)
-      setIsError(false)
-      try {
-        const res = await fetchCampers()
-        
-        setCampers(res.campers)
-      } catch {
-        setIsError(true)
-      } finally {
-        setIsLoading(false)
-      }
+  const campers = data?.pages.flatMap((page) => page.campers);
 
-    }
-    fetchData()
-  }, [])
+  const handleSubmit = async (filters: FilterProps) => {
+    setSearchFilters(filters);
+  };
 
-  const handleSubmit = (filter: FilterProps) => {
-    console.log(filter);
-
-    setFilter(filter);
+  const handleNext = () => {
+    fetchNextPage();
   };
 
   return (
     <Container>
       <div className={css.wrapper}>
-        <SideBar onSubmit={handleSubmit} />
-        {isLoading && <p>Loading, please wait...</p>}
-        {isError && <p>Some error, please try again later</p>}
-        {campers.length > 0 && <CampersList campers={campers}/>}
-        {filter && <p></p>}
+        <SideBar
+          onSubmit={handleSubmit}
+          onClear={() => setSearchFilters(null)}
+        />
+        <div className={css.campersWrap}>
+          {isLoading && <Loader />}
+          {isError && <Error message={error.message} />}
+          {}
+          {campers && <CampersList campers={campers} />}
+          {campers?.length === 0 && <NotFound />}
+        </div>
       </div>
+      {hasNextPage && (
+        <button
+          onClick={handleNext}
+          className={css.loadmore}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : "Load more"}
+        </button>
+      )}
     </Container>
   );
 };

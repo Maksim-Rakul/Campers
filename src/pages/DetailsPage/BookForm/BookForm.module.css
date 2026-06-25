@@ -1,0 +1,46 @@
+.formWrap {
+    margin-top: 51px;
+    padding: 44px 57px;
+    border: 1px solid #dadde1;
+    border-radius: 16px;
+}
+
+.title {
+    line-height: 1.2;
+    color: #101828;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.desc {
+    line-height: 1.5;
+    color: #6c717b;
+    margin-bottom: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.input {
+    padding: 18px;
+    background: #f7f7f7;
+    border: none;
+    width: 100%;
+    font-size: 16px;border-radius: 12px;
+}
+
+.input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+
+    line-height: 1.5;
+    color: #6c717b;
+}
+
+.send {
+    background: #829b91;
+    color: #fff;
+}

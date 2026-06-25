@@ -66,6 +66,7 @@
     display: flex;
     gap: 8px;
     margin-bottom: 24px;
+    margin-top: 24px;
 }
 
 .item__param {
@@ -90,4 +91,6 @@
     background: #829b91;
     color: #fff;
     padding: 16px 43px;
+    display: block;
+    max-width: 200px;
 }

@@ -48,3 +48,8 @@
     border: 1px solid #dadde1;
     color: #101828;
 }
+
+.clear__btn:hover {
+    background-color: #afafaf!important;
+    color: #fff;
+}

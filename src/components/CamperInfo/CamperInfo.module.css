@@ -1,0 +1,50 @@
+.item__top_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.item__name {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33333;
+    color: #101828;
+}
+
+.item__price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33333;
+    color: #101828;
+}
+
+.item__sub_info {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #101828;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.item__desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #475467;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.sub__icon {
+    width: 16px;
+    height: 16px;
+}
+
+.item__sub_wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
