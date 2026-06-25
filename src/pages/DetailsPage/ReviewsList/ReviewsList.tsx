@@ -15,8 +15,6 @@ const ReviewsList = ({ camperId }: ReviewsListProps) => {
     enabled: camperId !== "",
   });
 
-  console.log(data);
-
   return (
     <>
       {data && (
