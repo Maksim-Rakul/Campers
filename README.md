@@ -1,75 +1,48 @@
-# React + TypeScript + Vite
+# 🏕️ Campers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A catalog website for camper vans and motorhomes, built as a portfolio project. The application uses a public API to fetch and display camper data.
 
-Currently, two official plugins are available:
+**Live Demo:** [campers-amber.vercel.app](https://campers-amber.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📖 About the Project
 
-## React Compiler
+Campers is a modern web application for browsing and exploring camper vans and motorhomes. It uses a public API to obtain up-to-date data about available campers.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### Who is this application for?
 
-Note: This will impact Vite dev & build performances.
+- For travelers looking for the perfect camper
+- For those planning a road trip
+- For people who want to explore different camper models
+- For ordinary users who appreciate a convenient and beautiful interface
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Feature               | Description                              |
+| --------------------- | ---------------------------------------- |
+| 🏠 **Home page**      | Welcome section with call-to-action      |
+| 📋 **Catalog**        | Browse all available campers             |
+| 📄 **Camper details** | Full information about a selected camper |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Technologies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Core
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Technology     | Description                                 |
+| -------------- | ------------------------------------------- |
+| **HTML5**      | Semantic markup                             |
+| **CSS3**       | Stylization with Modern Normalize           |
+| **TypeScript** | Type safety and better developer experience |
+| **React**      | UI library for building the interface       |
+| **Vite**       | Build tool and development server           |
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Libraries
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Library            | Purpose                             |
+| ------------------ | ----------------------------------- |
+| **Axios**          | HTTP client for API requests        |
+| **React Router**   | Navigation and routing              |
+| **TanStack Query** | Server state management and caching |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### API
+
+**Public API** — Get data about campers, their specifications, and photos
